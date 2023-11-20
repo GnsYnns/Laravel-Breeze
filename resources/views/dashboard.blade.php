@@ -11,15 +11,15 @@
             @php
             //$messages = App\Models\Message::take(2)->get();
             $messages = App\Models\Message::all();
-
             @endphp
 
             @for ($i = 0; $i < count($messages); $i++) <!-- individual listings -->
                 @php
                 $message = $messages[$i];
+                $nom = App\Models\User::find($message->id_utilisateur)->name;
                 @endphp
-                <x-post-flux :name='$message->id_utilisateur' :text='$message->text' :like='$message->like'
-                    :retweet='$message->retweet' :date='$message->created_at' :comment='$message->comment' />
+                <x-post-flux :name='$nom' :text='$message->text' :like='$message->like' :retweet='$message->retweet'
+                    :date='$message->created_at' :comment='$message->comment' />
                 @endfor
 
         </div>

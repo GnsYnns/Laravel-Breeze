@@ -106,7 +106,7 @@
             <img src="https://pbs.twimg.com/profile_images/1012717264108318722/9lP-d2yM_400x400.jpg" alt=""
                 class="avator">
             <div class="tweet-header-info">
-                De {{$name}} - écrit le {{$date}}
+                {{$name}} - écrit le {{$date}}
                 <p>{{$text}}</p>
 
             </div>
