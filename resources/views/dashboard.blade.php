@@ -11,6 +11,7 @@
             @php
             //$messages = App\Models\Message::take(2)->get();
             $messages = App\Models\Message::all();
+
             @endphp
 
             @for ($i = 0; $i < count($messages); $i++) <!-- individual listings -->

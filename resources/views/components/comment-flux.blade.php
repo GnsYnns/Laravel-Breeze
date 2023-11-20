@@ -100,7 +100,7 @@
         }
     }
 </style>
-<div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg m-1">
+<div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ml-20">
     <div class="p-6 text-gray-900 dark:text-gray-100">
         <div class="tweet-header">
             <img src="https://pbs.twimg.com/profile_images/1012717264108318722/9lP-d2yM_400x400.jpg" alt=""
@@ -113,30 +113,6 @@
 
         </div>
         <div class="tweet-info-counts">
-
-            <div class="comments">
-
-                <svg class="feather feather-message-circle sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
-                    width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path
-                        d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                    </path>
-                </svg>
-                <div class="comment-count">{{$comment}}</div>
-            </div>
-
-            <div class="retweets">
-                <svg class="feather feather-repeat sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
-                    height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="17 1 21 5 17 9"></polyline>
-                    <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
-                    <polyline points="7 23 3 19 7 15"></polyline>
-                    <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
-                </svg>
-                <div class="retweet-count">{{$retweet}}</div>
-            </div>
 
             <div class="likes">
                 <svg class="feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
@@ -160,22 +136,5 @@
                 </svg>
             </div>
         </div>
-
-        @php
-        //$messages = App\Models\Message::take(2)->get();
-        $comments = App\Models\Comment::all();
-
-        @endphp
-
-        @for ($i = 0; $i < count($comments); $i++) <!-- individual listings -->
-            @php
-            $comment = $comments[$i];
-            @endphp
-            <x-comment-flux name="Test" text="message" like="message" retweet="message" date="message"
-                comment="message" />
-            @endfor
-
-
-
     </div>
 </div>
