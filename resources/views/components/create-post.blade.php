@@ -4,16 +4,16 @@
     </h2>
     <div>
         <div class="flex flex-col">
-            <textarea rows="4" id="message" class="px-3 py-2 border
+            <textarea rows="4" id="message" class="px-3 py-2 border shadow-sm sm:rounded-lg
                 bg-white dark:bg-gray-800
                 border-gray-900 dark:border-gray-900
                 focus:border-red-500 focus:outline-none 
-                text-gray-900 dark:text-gray-100 m-3"></textarea>
+                text-gray-900 dark:text-gray-100 m-3" placeholder=" {{ __('Write message...') }}"></textarea>
         </div>
     </div>
     <div class="pt-3 m-3">
         <button type="submit"
-            class="w-full bg-gray-800 border border-gray-900 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-red-500 hover:text-white text-xl cursor-pointer ">
+            class="text-gray-900 dark:text-gray-100 shadow-sm sm:rounded-lg w-full bg-gray-100 dark:bg-gray-900 border border-gray-900 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-red-500 hover:text-white text-xl cursor-pointer ">
             {{__('Send')}}
         </button>
     </div>
