@@ -4,7 +4,6 @@
     </h2>
     <div>
         <div class="flex flex-col">
-            <label class="p-6 text-gray-900 dark:text-gray-100" for="message">{{__('Message')}}</label>
             <textarea rows="4" id="message" class="px-3 py-2 border
                 bg-white dark:bg-gray-800
                 border-gray-900 dark:border-gray-900
