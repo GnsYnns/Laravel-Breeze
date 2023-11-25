@@ -4,6 +4,10 @@
     body {
         font-family: 'Asap', sans-serif;
     }
+    
+    #commentDiv{{$id}} {
+        display: none;
+    }
 
     img {
         max-width: 100%;
@@ -115,10 +119,9 @@
         <div class="tweet-info-counts">
 
             <div class="comments">
-
-                <svg class="feather feather-message-circle sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
+                <svg class="hover:fill-black dark:hover:fill-white feather feather-message-circle sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                     width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" onclick="afficherComment({{$id}})">
                     <path
                         d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
                     </path>
@@ -127,7 +130,7 @@
             </div>
 
             <div class="retweets">
-                <svg class="feather feather-repeat sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
+                <svg class="hover:fill-black dark:hover:fill-white feather feather-repeat sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
                     height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polyline points="17 1 21 5 17 9"></polyline>
@@ -139,7 +142,7 @@
             </div>
 
             <div class="likes">
-                <svg class="feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
+                <svg class="hover:fill-black dark:hover:fill-white feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
                     height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path
@@ -152,7 +155,7 @@
             </div>
 
             <div class="message">
-                <svg class="feather feather-send sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
+                <svg class="hover:fill-black dark:hover:fill-white feather feather-send sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg" width="20"
                     height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -160,21 +163,31 @@
                 </svg>
             </div>
         </div>
-        @php
-        //$messages = App\Models\Message::take(2)->get();
-        $comments = App\Models\Comment::where('id_message',$id)->get();
-        @endphp
-
-        @for ($i = 0; $i < count($comments); $i++) <!-- individual listings -->
+        <div id="commentDiv{{$id}}">
             @php
-            $postcomment = $comments[$i];
-            $nom = App\Models\User::find($postcomment->id_utilisateur)->name;
+            //$messages = App\Models\Message::take(2)->get();
+            $comments = App\Models\Comment::where('id_message',$id)->get();
             @endphp
-            <x-comment-flux :name='$nom' :like='$postcomment->like' :date='$postcomment->created_at'
-                :text='$postcomment->text' :name='$nom' :like='$postcomment->like' />
-            @endfor
-
-
+            @for ($i = 0; $i < count($comments); $i++) <!-- individual listings -->
+                @php
+                $postcomment = $comments[$i];
+                $nom = App\Models\User::find($postcomment->id_utilisateur)->name;
+                @endphp
+                <x-comment-flux :name='$nom' :like='$postcomment->like' :date='$postcomment->created_at'
+                    :text='$postcomment->text' :name='$nom' :like='$postcomment->like' />
+                @endfor
+        </div>
+        <script>
+            // Fonction pour afficher la div
+            function afficherComment(id) {
+                var div = document.getElementById("commentDiv"+id);
+                if (div.style.display === 'none' || div.style.display === '') {
+                    div.style.display = 'block';
+                } else {
+                    div.style.display = 'none';
+                }
+            }
+        </script>
 
     </div>
 </div>
