@@ -103,8 +103,8 @@
 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg m-1">
     <div class="p-6 text-gray-900 dark:text-gray-100">
         <div class="tweet-header">
-            <img src="https://pbs.twimg.com/profile_images/1012717264108318722/9lP-d2yM_400x400.jpg" alt=""
-                class="avator">
+            <img src="https://soccerpointeclaire.com/wp-content/uploads/2021/06/default-profile-pic-e1513291410505.jpg"
+                alt="" class="avator">
             <div class="tweet-header-info">
                 {{$name}} - écrit le {{$date}}
                 <p>{{$text}}</p>
@@ -160,19 +160,18 @@
                 </svg>
             </div>
         </div>
-
         @php
         //$messages = App\Models\Message::take(2)->get();
-        $comments = App\Models\Comment::all();
-
+        $comments = App\Models\Comment::where('id_message',$id)->get();
         @endphp
 
         @for ($i = 0; $i < count($comments); $i++) <!-- individual listings -->
             @php
-            $comment = $comments[$i];
+            $postcomment = $comments[$i];
+            $nom = App\Models\User::find($postcomment->id_utilisateur)->name;
             @endphp
-            <x-comment-flux name="Test" text="message" like="message" retweet="message" date="message"
-                comment="message" />
+            <x-comment-flux :name='$nom' :like='$postcomment->like' :date='$postcomment->created_at'
+                :text='$postcomment->text' :name='$nom' :like='$postcomment->like' />
             @endfor
 
 

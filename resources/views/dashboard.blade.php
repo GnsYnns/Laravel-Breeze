@@ -7,7 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
+            <x-create-post />
             @php
             //$messages = App\Models\Message::take(2)->get();
             $messages = App\Models\Message::all();
@@ -20,9 +20,11 @@
                 $nom = App\Models\User::find($message->id_utilisateur)->name;
                 @endphp
                 <x-post-flux :name='$nom' :text='$message->text' :like='$message->like' :retweet='$message->retweet'
-                    :date='$message->created_at' :comment='$message->comment' />
+                    :date='$message->created_at' :comment='$message->comment' :id='$message->id' />
                 @endfor
-
         </div>
     </div>
+
+
+
 </x-app-layout>
