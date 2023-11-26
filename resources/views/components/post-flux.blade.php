@@ -176,6 +176,7 @@
                 <x-comment-flux :name='$nom' :like='$postcomment->like' :date='$postcomment->created_at'
                     :text='$postcomment->text' :name='$nom' :like='$postcomment->like' />
                 @endfor
+                <x-create-comment/>
         </div>
         <script>
             // Fonction pour afficher la div
