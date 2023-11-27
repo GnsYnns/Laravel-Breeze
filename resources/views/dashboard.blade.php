@@ -20,7 +20,7 @@
                 $nom = App\Models\User::find($message->id_utilisateur)->name;
                 @endphp
                 <x-post-flux :name='$nom' :text='$message->text' :like='$message->like' :retweet='$message->retweet'
-                    :date='$message->created_at' :comment='$message->comment' :id='$message->id' />
+                    :date='$message->created_at->format("d/m/Y")' :comment='$message->comment' :id='$message->id' />
                 @endfor
         </div>
     </div>
