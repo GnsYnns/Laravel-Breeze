@@ -173,7 +173,7 @@
                 $postcomment = $comments[$i];
                 $nom = App\Models\User::find($postcomment->id_utilisateur)->name;
                 @endphp
-                <x-comment-flux :name='$nom' :like='$postcomment->like' :date='$postcomment->created_at'
+                <x-comment-flux :name='$nom' :like='$postcomment->like' :date='$postcomment->created_at->format("d/m/Y")'
                     :text='$postcomment->text' :name='$nom' :like='$postcomment->like' />
                 @endfor
                 <x-create-comment/>
