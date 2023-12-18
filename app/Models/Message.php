@@ -19,9 +19,4 @@ class Message extends Model
         'like',
         'created_at',
     ];
-
-    public function utilisateur()
-    {
-        return $this->belongsTo(Utilisateur::class, 'id_utilisateur');
-    }
 }
