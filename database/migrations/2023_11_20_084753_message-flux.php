@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer('retweet');
             $table->integer('like');
 
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 
